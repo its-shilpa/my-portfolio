@@ -51,6 +51,35 @@ document.querySelectorAll(".nav-menu a").forEach(link => {
 });
 
 
+//about section
+  (function () {
+    // CHANGE THIS TO YOUR CAREER START DATE
+    const startDate = new Date("2023-07-20");
+
+    const today = new Date();
+
+    let years = today.getFullYear() - startDate.getFullYear();
+    let months = today.getMonth() - startDate.getMonth();
+    let days = today.getDate() - startDate.getDate();
+
+    if (days < 0) {
+      months--;
+      const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+      days += prevMonth.getDate();
+    }
+
+    if (months < 0) {
+      years--;
+      months += 12;
+    }
+
+    document.getElementById("exp-years").textContent = years;
+    document.getElementById("exp-months").textContent = months;
+    document.getElementById("exp-days").textContent = days;
+  })();
+
+
+
 
 //<!--skill orbit animation-->
 
