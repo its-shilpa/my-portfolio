@@ -6,7 +6,7 @@
     font-family:'Poppins',sans-serif;
 }
 html{
-    scroll-behavior:smooth;
+    scroll-behavior:auto;
     max-width: 100%;
     overflow-x: hidden;
 }
@@ -1919,6 +1919,79 @@ section::after {
   .contact-form {
     margin-top: 0 !important;
     margin-bottom: 0 !important;
+  }
+}
+
+
+/* ==================================================
+   FINAL PERFORMANCE OVERRIDE (SAFE MODE)
+   Works for Desktop + Mobile
+   ================================================== */
+
+/* 1. Kill layout-thrashing transitions */
+.reveal,
+.reveal-left,
+.reveal-right {
+  transition: transform 0.6s ease, opacity 0.6s ease !important;
+}
+
+/* 2. Force GPU compositing */
+.parallax-glow,
+.hero-glow,
+.hero-glow .glow,
+.skill,
+.project-card,
+.service-card,
+.social {
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* 3. Freeze parallax motion (visual stays, CPU stops) */
+.parallax-glow {
+  transition: none !important;
+}
+
+/* 4. Reduce blur radius (huge FPS win, no visual loss) */
+.parallax-glow,
+.hero-glow .glow {
+  filter: blur(48px) !important;
+}
+
+/* 5. Limit expensive backdrop-filter usage */
+.exp-professional,
+.service-card,
+.contact-card,
+.contact-form {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* 6. Stop section repaint separators */
+section::after {
+  display: none !important;
+}
+
+/* 7. Reveal animation GPU-safe */
+.reveal {
+  transform: translate3d(0, 40px, 0) !important;
+}
+.reveal.active {
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* 8. Mobile-specific performance tightening */
+@media (max-width: 768px) {
+  .hero-glow .glow {
+    filter: blur(40px) !important;
+  }
+}
+
+/* 9. Accessibility & fallback */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
   }
 }
 
