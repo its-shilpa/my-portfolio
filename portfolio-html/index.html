@@ -376,7 +376,7 @@
     </div>
 
     <!-- Contact Form -->
-    <form action="/success.html" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
 
         <input type="hidden" name="form-name" value="contact">
 
@@ -397,6 +397,9 @@
         </div>
 
         <button type="submit" class="btn">Send Message</button>
+
+        <p class="form-success" style="display:none;">✅ Message sent successfully!</p>
+        <p class="form-error" style="display:none;">❌ Something went wrong. Please try again.</p>
 
     </form>
   </div>

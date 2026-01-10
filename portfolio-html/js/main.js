@@ -252,3 +252,30 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.getElementById(btn.dataset.tab).classList.add('active');
   });
 });
+
+//Ajax Form Submission
+const form = document.getElementById("contact-form");
+
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const successMsg = form.querySelector(".form-success");
+  const errorMsg = form.querySelector(".form-error");
+
+  const formData = new FormData(form);
+
+  fetch("/", {
+    method: "POST",
+    body: formData
+  })
+    .then(() => {
+      form.reset();
+      successMsg.style.display = "block";
+      errorMsg.style.display = "none";
+    })
+    .catch(() => {
+      successMsg.style.display = "none";
+      errorMsg.style.display = "block";
+    });
+});
+
