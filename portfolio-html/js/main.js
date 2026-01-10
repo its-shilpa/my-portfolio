@@ -255,27 +255,48 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
 //Ajax Form Submission
 const form = document.getElementById("contact-form");
+const btn = form.querySelector(".btn");
+const successMsg = form.querySelector(".form-success");
+const errorMsg = form.querySelector(".form-error");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const successMsg = form.querySelector(".form-success");
-  const errorMsg = form.querySelector(".form-error");
+  btn.classList.add("loading");
+  btn.disabled = true;
+
+  successMsg.classList.remove("show");
+  errorMsg.classList.remove("show");
 
   const formData = new FormData(form);
 
   fetch("/", {
     method: "POST",
-    body: formData
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams(formData).toString(),
   })
     .then(() => {
       form.reset();
-      successMsg.style.display = "block";
-      errorMsg.style.display = "none";
+
+      btn.classList.remove("loading");
+      btn.disabled = false;
+
+      successMsg.classList.add("show");
+
+      // Auto hide success message after 4 seconds
+      setTimeout(() => {
+        successMsg.classList.remove("show");
+      }, 4000);
     })
     .catch(() => {
-      successMsg.style.display = "none";
-      errorMsg.style.display = "block";
+      btn.classList.remove("loading");
+      btn.disabled = false;
+
+      errorMsg.classList.add("show");
     });
 });
+
+
 

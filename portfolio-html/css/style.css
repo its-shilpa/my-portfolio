@@ -1414,6 +1414,66 @@ section::after {
     transition: 0.8s ease;
 }
 
+/* ajaxcontact form design */
+/* Hide messages initially */
+.form-success,
+.form-error {
+  display: none;
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+}
+
+.form-success.show {
+  display: block;
+  color: #2ecc71;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.form-error.show {
+  display: block;
+  color: #e74c3c;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button spinner */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid transparent;
+  border-top: 2px solid #fff;
+  border-radius: 50%;
+  display: none;
+  animation: spin 0.8s linear infinite;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn.loading .btn-text {
+  visibility: hidden;
+}
+
+.btn.loading .btn-spinner {
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg) translateX(-50%);
+  }
+}
+
+
 
 /* RESPONSIVE */
 
