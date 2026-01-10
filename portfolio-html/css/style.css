@@ -748,7 +748,8 @@ section > *:last-child {
 /* Skills Section */
 .skills-orbit-section {
     background: radial-gradient(circle at center, #020617, #020617);
-    padding: 100px 0;
+    padding: 56px 0;
+    padding-bottom: 56px !important;
 }
 
 .orbit-wrapper {
@@ -1328,7 +1329,7 @@ section > *:last-child {
 }
 
 /* Section gradient backgrounds */
-section {
+/* section {
     position: relative;
     background: radial-gradient(
         circle at top left,
@@ -1340,7 +1341,7 @@ section {
         rgba(14, 165, 233, 0.06),
         transparent 45%
     );
-}
+} */
 
 /* Alternate sections (slight variation for depth) */
 section:nth-child(even) {
@@ -1507,11 +1508,15 @@ section::after {
 }
 
 @media (max-width: 480px) {
-    .section-title {
-        font-size: 26px;
-        margin-bottom: 22px;
-    }
+  .section-title {
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
+    padding-top: 0 !important;
+    font-size: 26px;
+    line-height: 1.2;
+  }
 }
+
 
 
 
@@ -1521,16 +1526,6 @@ section::after {
         text-align: center;
         gap: 40px;
         min-height: calc(100vh - 64px);
-    }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 480px) {
-    .nav-menu a {
-        width: 85%;
-        text-align: center;
-        padding: 12px;
-        font-size: 16px;
     }
 }
 
@@ -1597,13 +1592,59 @@ section::after {
     }
 
     /* Menu items spacing FIX */
+    @media (max-width: 480px) {
     .nav-menu a {
-        margin: 8px 0;     /* ✅ reduced spacing */
-        padding: 10px 0;
+        margin: 4px 0;          /* tighter vertical rhythm */
+        padding: 8px 0;
         font-size: 16px;
-        width: 100%;
+        width: auto;            /* IMPORTANT */
         text-align: center;
+        position: relative;
     }
+    }
+
+    @media (max-width: 480px) {
+
+  /* Remove desktop underline behavior */
+    .nav-menu a::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 22px;                 /* modern short line */
+        height: 2px;
+        border-radius: 2px;
+        background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #6366f1,
+        #ec4899
+        );
+        transition: transform 0.3s ease;
+    }
+
+    /* Active / hover state */
+    .nav-menu a.active::after,
+    .nav-menu a:hover::after {
+        transform: translateX(-50%) scaleX(1);
+    }
+    }
+
+    @media (max-width: 480px) {
+  .nav-menu {
+    padding: 12px 0 16px;   /* compact & clean */
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-menu a.active {
+    font-weight: 600;
+    color: #38bdf8;
+    letter-spacing: 0.3px;
+  }
+}
+
 
     /* Hamburger animation */
     .hamburger.active span:nth-child(1) {
@@ -1662,7 +1703,7 @@ section::after {
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
     .about-section {
-        padding: 72px 16px;
+        padding: 28px 16px !important;
     }
 
     .about-card {
@@ -1773,6 +1814,13 @@ section::after {
     }
 }
 
+@media (max-width: 480px) {
+  .skills-orbit-section {
+    /* padding: 32px 0; */
+    padding-bottom: 56px !important;
+  }
+}
+
 
 @media (max-width: 768px) {
     .parallax-glow {
@@ -1837,3 +1885,40 @@ section::after {
     bottom: 10%;
     right: 10%;
 }
+
+
+/* ===============================
+   MOBILE SECTION SPACING FIX
+   =============================== */
+@media (max-width: 480px) {
+
+  /* Hard reset section spacing */
+  section,
+  .projects-section,
+  .services-section,
+  .contact-section,
+  /* .skills-orbit-section, */
+  .about-section {
+    padding-top: 40px !important;
+    padding-bottom: 30px !important;
+    margin: 0 !important;
+  }
+
+  /* Remove fake separators that look like space */
+  section::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-card,
+  .exp-professional,
+  .service-card,
+  .project-card,
+  .contact-card,
+  .contact-form {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+}
+
