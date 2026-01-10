@@ -396,10 +396,9 @@
         <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
         </div>
 
-        <button type="submit" class="btn"><span class="btn-text">Send Message</span><span className="btn-spinner" /></button>
+        <button type="submit" class="btn" id="submitBtn"><span class="btn-text">Send Message</span><span class="spinner"></span></button>
 
-        <p class="form-success">✅ Message sent successfully!</p>
-        <p class="form-error">❌ Something went wrong. Please try again.</p>
+        <p class="form-status" id="formStatus"></p>
 
     </form>
   </div>

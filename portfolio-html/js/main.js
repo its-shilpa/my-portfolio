@@ -253,50 +253,50 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
+
+
 //Ajax Form Submission
 const form = document.getElementById("contact-form");
-const btn = form.querySelector(".btn");
-const successMsg = form.querySelector(".form-success");
-const errorMsg = form.querySelector(".form-error");
+const status = document.getElementById("formStatus");
+const btn = document.getElementById("submitBtn");
+const btnText = btn.querySelector(".btn-text");
+const spinner = btn.querySelector(".spinner");
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  btn.classList.add("loading");
+  status.textContent = "";
   btn.disabled = true;
-
-  successMsg.classList.remove("show");
-  errorMsg.classList.remove("show");
+  btnText.textContent = "Sending...";
+  spinner.classList.add("show");
 
   const formData = new FormData(form);
 
   fetch("/", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
     body: new URLSearchParams(formData).toString(),
   })
     .then(() => {
+      status.textContent = "✅ Message sent successfully!";
+      status.className = "form-status success";
       form.reset();
 
-      btn.classList.remove("loading");
-      btn.disabled = false;
-
-      successMsg.classList.add("show");
-
-      // Auto hide success message after 4 seconds
       setTimeout(() => {
-        successMsg.classList.remove("show");
+        status.textContent = "";
       }, 4000);
     })
     .catch(() => {
-      btn.classList.remove("loading");
+      status.textContent = "❌ Something went wrong. Please try again.";
+      status.className = "form-status error";
+    })
+    .finally(() => {
       btn.disabled = false;
-
-      errorMsg.classList.add("show");
+      btnText.textContent = "Send Message";
+      spinner.classList.remove("show");
     });
 });
+
 
 
 
