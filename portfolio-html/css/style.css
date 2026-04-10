@@ -893,6 +893,7 @@ section > *:last-child {
 
 /* Colors */
 .html { color: #f97316; }
+.vue { color: #22c55e; }
 .css { color: #38bdf8; }
 .js { color: #facc15; }
 .jquery { color: #22c55e; }
@@ -902,6 +903,7 @@ section > *:last-child {
 .mysql { color: #22c55e; }
 .git { color: #FF00BF}
 .bootstrap { color: #22c55e;}
+.react { color: #38bdf8; }
 
 
 /* Projects Section */
