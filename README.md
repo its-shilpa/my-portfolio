@@ -44,7 +44,7 @@ my-portfolio/
 
 ## 🔗 Live Demo
 
-👉 https://shilpam-portfolio.netlify.app/
+👉 https://shilpam-portfolioo.netlify.app/
 
 ---
 
