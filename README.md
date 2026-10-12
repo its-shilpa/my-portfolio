@@ -25,7 +25,7 @@ This project was developed in multiple stages to demonstrate flexibility across 
 - WordPress (Custom Theme Development)  
 
 ### 🌐 Deployment
-- Netlify  
+- Netlify Platform
 
 ---
 
